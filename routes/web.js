@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-const Controller = require('../controllers/controller')
-const UserController = require('../controllers/UserController')
-const CourseController = require('../controllers/CourseController')
+const Controller = require('../Controllers/controller')
+const UserController = require('../Controllers/UserController')
+const CourseController = require('../Controllers/CourseController')
 
 
 // TODO : BUAT JADI HELPER

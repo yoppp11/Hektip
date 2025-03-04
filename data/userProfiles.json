@@ -1,0 +1,23 @@
+[
+    {
+        "fullName": "John Doe",
+        "email": "user1@example.com",
+        "password": "$2b$10$JiSr4Yeq/wHp3fw3j6YD.e8pBtM5dpOqyQhQmgmkgn9C4ERfyDvLy",
+        "phone": 1234567890,
+        "UserId": 1
+      },
+      {
+        "fullName": "Jane Smith",
+        "email": "user2@example.com",
+        "password": "$2b$10$7gUrru6vCCoLjSFZOHpVNeD.mZQ2iG9m1jwr1KkRjZhuMnjjPOQE2",
+        "phone": 9876543210,
+        "UserId": 2
+      },
+      {
+        "fullName": "Alice Johnson",
+        "email": "admin1@example.com",
+        "password": "$2b$10$VhMgvIOXzEruaQ1vfxWnEOK2rinMTvGEngD0/V7.eNAm.hfqhKHna",
+        "phone": 5551234567,
+        "UserId": 3
+      }
+]
