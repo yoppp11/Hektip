@@ -5,6 +5,8 @@ const Controller = require('../controllers/controller')
 const UserController = require('../controllers/UserController')
 const CourseController = require('../controllers/CourseController')
 
+
+// TODO : BUAT JADI HELPER
 function redirectIfAuthenticated(req, res, next) {
     if (req.session.user) {
         // Kalau udah login, mental ke halaman orders
