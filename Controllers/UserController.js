@@ -1,7 +1,7 @@
 const { User } = require('../models/index')
 
 class UserController {
-    static async create(req, res) {
+    static async register(req, res) {
         try {
             res.render(
                 `auth/register.ejs`
@@ -17,6 +17,16 @@ class UserController {
                 req.body
             )
             res.redirect('/login')
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async loginPage(req, res) {
+        try {
+            res.render(
+                `auth/login.ejs`
+            )
         } catch (error) {
             res.send(error)
         }
