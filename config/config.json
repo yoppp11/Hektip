@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "Hektip",
+    "database": "edtech",
     "host": "localhost",
     "dialect": "postgres"
   },
