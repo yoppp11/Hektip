@@ -5,12 +5,20 @@ const Controller = require('../controllers/controller')
 const UserController = require('../controllers/UserController')
 const CourseController = require('../controllers/CourseController')
 
+function redirectIfAuthenticated(req, res, next) {
+    if (req.session.user) {
+        // Kalau udah login, mental ke halaman orders
+        return res.redirect('/courses')
+    }
+    next() // Kalau belum login, lanjut ke handler berikutnya
+}
+
 router.get('/', Controller.index)
 
-router.get('/login', UserController.loginPage)
+router.get('/login', redirectIfAuthenticated, UserController.loginPage)
 router.post('/login', UserController.login)
 
-router.get('/register', UserController.register)
+router.get('/register', redirectIfAuthenticated, UserController.register)
 router.post('/register', UserController.store)
 
 // middleware
