@@ -46,12 +46,19 @@ class UserController {
                 // cek password
                 const isValidPassword = await bcrypt.compare(password, user.password)
                 if (isValidPassword) {
-                    //TODO: PASSWORD SALAH
+                    req.session.user = {
+                        id: user.id,
+                        role: user.role,
+                        email: user.email
+                    }
+                    res.redirect('/courses')
                 } else {
-                    console.log("gaboleee")
+                    // password salah
+                    res.redirect('/login')
                 }
             } else {
-                //TODO : email tidak ditemukan
+                //email tidak ditemukan
+                res.redirect('/login')
             }
         } catch (error) {
 
