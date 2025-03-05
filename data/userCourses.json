@@ -1,0 +1,12 @@
+[
+    {
+        "enrolledDate": "2023-10-01",
+        "UserId": 1,
+        "CourseId": 1
+      },
+    {
+        "enrolledDate": "2023-10-02",
+        "UserId": 2,
+        "CourseId": 2
+    }
+]

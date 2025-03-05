@@ -1,0 +1,27 @@
+[
+    {
+        "courseName": "Introduction to Programming",
+        "description": "Learn the basics of programming with Python.",
+        "price": 100000
+      },
+      {
+        "courseName": "Web Development Fundamentals",
+        "description": "Understand HTML, CSS, and JavaScript to build websites.",
+        "price": 150000
+      },
+      {
+        "courseName": "Data Science Essentials",
+        "description": "Explore data analysis and machine learning with Python.",
+        "price": 200000
+      },
+      {
+        "courseName": "Mobile App Development",
+        "description": "Build mobile apps for Android and iOS using Flutter.",
+        "price": 250000
+      },
+      {
+        "courseName": "Advanced JavaScript",
+        "description": "Master advanced JavaScript concepts and frameworks like React.",
+        "price": 180000
+      }
+]
