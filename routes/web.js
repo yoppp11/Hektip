@@ -3,7 +3,7 @@ const router = express.Router()
 
 const Controller = require('../Controllers/controller')
 const UserController = require('../Controllers/UserController')
-const CourseController = require('../Controllers/CourseController')
+const CourseController = require('../controllers/CourseController')
 
 
 // TODO : BUAT JADI HELPER
@@ -33,6 +33,8 @@ router.use(function (req, res, next) {
     }
 })
 
+
 router.get('/courses', CourseController.index)
+router.post('/logout', UserController.logout)
 
 module.exports = router

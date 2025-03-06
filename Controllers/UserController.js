@@ -25,7 +25,14 @@ class UserController {
 
     static async loginPage(req, res) {
         try {
-            res.render(`auth/login.ejs`)
+            let user
+            if (req.session.user) {
+                user = req.session.user
+            }
+            res.render(
+                `auth/login.ejs`,
+                { data: user }
+            )
         } catch (error) {
             res.send(error)
         }
@@ -62,6 +69,16 @@ class UserController {
             }
         } catch (error) {
 
+        }
+    }
+
+    static async logout(req, res) {
+        try {
+            req.session.destroy(() => {
+                res.redirect('/login')
+            })
+        } catch (error) {
+            res.send(error)
         }
     }
 }
