@@ -60,6 +60,17 @@ class CourseController {
     static async routeJoinClas(req, res) {
         console.log(req.session.user);
     }
+
+    static findCourseByUserId(req, res) {
+        try {
+            const id = req.params.id
+            res.render(
+                `userCourses.ejs`
+            )
+        } catch (error) {
+            res.send(error)
+        }
+    }
 }
 
 module.exports = CourseController

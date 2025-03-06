@@ -1,7 +1,10 @@
 class Controller {
     static async index(req, res) {
         try {
-            res.render(`index.ejs`)
+            const user = req.session.user
+            res.render(`index.ejs`,
+                { userData: user }
+            )
         } catch (error) {
             res.send(error)
         }

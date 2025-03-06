@@ -37,6 +37,10 @@ router.use(function (req, res, next) {
 router.get('/courses', CourseController.index)
 router.post('/logout', UserController.logout)
 router.get('/join', CourseController.routeJoinClas)
+
+
+router.get('/users/:id/courses', CourseController.findCourseByUserId)
+
 router.get('/courses/:id', CourseController.routeGetCourseId)
 
 
