@@ -26,6 +26,7 @@ router.post('/register', UserController.store)
 // middleware
 router.use(function (req, res, next) {
     if (req.session.user) {
+        console.log(req.session);
         next()
     } else {
         // jika belum login, mental
@@ -34,5 +35,7 @@ router.use(function (req, res, next) {
 })
 
 router.get('/courses', CourseController.index)
+router.get('/join', CourseController.routeJoinClas)
+router.get('/courses/:id', CourseController.routeGetCourseId)
 
 module.exports = router

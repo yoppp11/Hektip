@@ -1,27 +1,110 @@
 [
-    {
-        "courseName": "Introduction to Programming",
-        "description": "Learn the basics of programming with Python.",
-        "price": 100000
-      },
-      {
-        "courseName": "Web Development Fundamentals",
-        "description": "Understand HTML, CSS, and JavaScript to build websites.",
-        "price": 150000
-      },
-      {
-        "courseName": "Data Science Essentials",
-        "description": "Explore data analysis and machine learning with Python.",
-        "price": 200000
-      },
-      {
-        "courseName": "Mobile App Development",
-        "description": "Build mobile apps for Android and iOS using Flutter.",
-        "price": 250000
-      },
-      {
-        "courseName": "Advanced JavaScript",
-        "description": "Master advanced JavaScript concepts and frameworks like React.",
-        "price": 180000
-      }
+  {
+    "courseName": "Advanced JavaScript",
+    "description": "Learn advanced JavaScript concepts and build real-world applications.",
+    "price": 349000,
+    "imageUrl": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+    "trailerUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "membersJoined": 1234,
+    "level": "Intermediate",
+    "instructorName": "John Doe",
+    "instructorAvatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+    "instructorBio": "John is a senior software engineer with over 10 years of experience in web development.",
+    "curriculum": [
+        "Advanced JavaScript concepts like closures and promises",
+        "Building real-world applications with Node.js",
+        "Understanding async/await and event loops",
+        "Mastering ES6+ features"
+    ]
+},
+{
+    "courseName": "React Mastery",
+    "description": "Become a React expert by building modern web applications.",
+    "price": 429000,
+    "imageUrl": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+    "trailerUrl": "https://www.youtube.com/embed/7b42lVMdEjE",
+    "membersJoined": 256,
+    "level": "Advanced",
+    "instructorName": "Jane Smith",
+    "instructorAvatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+    "instructorBio": "Jane is a frontend developer specializing in React and Redux.",
+    "curriculum": [
+        "React fundamentals and JSX",
+        "State management with Redux",
+        "Building reusable components",
+        "Advanced React patterns"
+    ]
+},
+{
+    "courseName": "Python for Data Science",
+    "description": "Learn Python and its applications in data science and machine learning.",
+    "price": 523000,
+    "imageUrl": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+    "trailerUrl": "https://www.youtube.com/embed/LhR-y7NlE2E",
+    "membersJoined": 5230,
+    "level": "Beginner",
+    "instructorName": "Emily Johnson",
+    "instructorAvatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+    "instructorBio": "Emily is a data scientist with expertise in Python and machine learning.",
+    "curriculum": [
+        "Python basics and data structures",
+        "Data analysis with Pandas",
+        "Data visualization with Matplotlib",
+        "Introduction to machine learning"
+    ]
+},
+{
+    "courseName": "Full-Stack Web Development",
+    "description": "Learn to build full-stack web applications using MERN stack.",
+    "price": 432900,
+    "imageUrl": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+    "trailerUrl": "https://www.youtube.com/embed/3nLTB_E6XAM",
+    "membersJoined": 3218,
+    "level": "Intermediate",
+    "instructorName": "Michael Brown",
+    "instructorAvatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+    "instructorBio": "Michael is a full-stack developer with expertise in MERN stack.",
+    "curriculum": [
+        "Introduction to MERN stack",
+        "Building RESTful APIs",
+        "Frontend development with React",
+        "Deploying full-stack applications"
+    ]
+},
+{
+    "courseName": "UI/UX Design Fundamentals",
+    "description": "Learn the basics of UI/UX design and create stunning interfaces.",
+    "price": 124666,
+    "imageUrl": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+    "trailerUrl": "https://www.youtube.com/embed/5qap5aO4i9A",
+    "membersJoined": 5678,
+    "level": "Beginner",
+    "instructorName": "Sophia Lee",
+    "instructorAvatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+    "instructorBio": "Sophia is a UI/UX designer with over 8 years of experience.",
+    "curriculum": [
+        "Introduction to UI/UX design",
+        "Design principles and tools",
+        "Creating wireframes and prototypes",
+        "User testing and feedback"
+    ]
+},
+{
+    "courseName": "Cloud Computing with AWS",
+    "description": "Master cloud computing using Amazon Web Services (AWS).",
+    "price": 398000,
+    "imageUrl": "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+    "trailerUrl": "https://www.youtube.com/embed/3hLmDS179YE",
+    "membersJoined": 488,
+    "level": "Advanced",
+    "instructorName": "David Wilson",
+    "instructorAvatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+    "instructorBio": "David is a cloud architect with expertise in AWS and Azure.",
+    "curriculum": [
+        "Introduction to AWS",
+        "EC2, S3, and RDS",
+        "Serverless computing with Lambda",
+        "Deploying applications on AWS"
+    ]
+}
 ]

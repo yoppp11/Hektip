@@ -5,7 +5,32 @@
 
     <body>
         <%- include('components/_navbar.ejs') %>
-            from courses
+
+        <div style="display: flex; width: 80%; flex-direction: row; justify-content: center;">
+
+            
+            <% data.forEach(el => { %>
+                
+                <a href="/courses/<%= el.id %>" class="card bg-base-100 w-96 shadow-sm" style="margin: 16px;">
+                    <figure>
+                  <img
+                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    alt="Shoes" />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title"><%= el.courseName %></h2>
+                    <p><%= el.formatPrice %></p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary">Join Now</button>
+                    </div>
+                </div>
+            </a>
+            <% }) %>
+            
+        </div>
+
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     </body>
 
 </html>
