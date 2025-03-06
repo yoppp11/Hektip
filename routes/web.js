@@ -34,7 +34,7 @@ router.use(function (req, res, next) {
     }
 })
 
-router.get('/courses', CourseController.index)
+router.get('/courses', CourseController.routeGetCourses)
 router.get('/join', CourseController.routeJoinClas)
 router.get('/courses/:id', CourseController.routeGetCourseId)
 

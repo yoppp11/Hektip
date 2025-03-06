@@ -2,7 +2,7 @@
 
 const {NumberFormat} = require('intl')
 const {
-  Model
+  Model, Op
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Course extends Model {
@@ -24,9 +24,31 @@ module.exports = (sequelize, DataTypes) => {
       }).format(this.price)
     }
 
-    static async getdata(){
+    static async getData(search, filter){
       try {
-        
+        let data
+
+        if(!search && !filter){
+          data = await Course.findAll()          
+        } else if(search){
+          data = await Course.findAll({
+            where: {
+              courseName: {
+                [Op.iLike]: `%${search}%`
+              }
+            }
+          })
+        } else if(filter){
+          data = await Course.findAll({
+            where: {
+              level: filter
+            }
+          })
+          
+        }
+
+        return data
+
       } catch (error) {
         throw error
       }

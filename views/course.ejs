@@ -6,27 +6,63 @@
     <body>
         <%- include('components/_navbar.ejs') %>
 
-        <div style="display: flex; width: 80%; flex-direction: row; justify-content: center;">
-
-            
-            <% data.forEach(el => { %>
+        <div class="container mx-auto p-8">
+            <div class="flex justify-center mb-8">
                 
-                <a href="/courses/<%= el.id %>" class="card bg-base-100 w-96 shadow-sm" style="margin: 16px;">
-                    <figure>
-                  <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title"><%= el.courseName %></h2>
-                    <p><%= el.formatPrice %></p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Join Now</button>
-                    </div>
-                </div>
-            </a>
-            <% }) %>
+                    <form action="/courses" method="get" class="join w-full max-w-md">
+
+                        <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search courses..."
+                        class="input input-bordered join-item w-full"
+                        name="search"
+                        />
+                        <button id="searchButton" class="btn btn-primary join-item" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </button>
+                    </form>
+                
+            </div>
+
+            <div class="flex justify-center gap-4 mb-8">
+                <a class="btn btn-soft btn-info" href="/courses">All</a>
+                <a class="btn btn-soft btn-info" href="/courses?filter=Beginner">Beginner</a>
+                <a class="btn btn-soft btn-info" href="/courses?filter=Intermediate">Intermediate</a>
+                <a class="btn btn-soft btn-info" href="/courses?filter=Advanced">Advanced</a>
+            </div>
+    
             
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="courseGrid">
+                <% data.forEach(course => { %>
+                    <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                        <figure>
+                            <img src="<%= course.imageUrl %>" alt="Course Image" class="w-full h-48 object-cover" />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title text-2xl font-bold mb-2"><%= course.courseName %></h2>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-lg font-semibold text-primary"><%= course.formatPrice %></span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-600">Members Joined:</span>
+                                    <span class="font-semibold"><%= course.membersJoined %></span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-600">Level:</span>
+                                    <span class="font-semibold"><%= course.level %></span>
+                                </div>
+                            </div>
+                            <div class="card-actions justify-end mt-4">
+                                <a href="/courses/<%= course.id %>" class="btn btn-primary" style="color: white;">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
         </div>
 
         <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />

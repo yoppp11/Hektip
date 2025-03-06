@@ -2,10 +2,20 @@ const { EagerLoadingError } = require("sequelize");
 const {Course, CourseComment, Comment} = require("../models/index")
 
 class CourseController {
-    static async index(req, res) {
+    static async routeGetCourses(req, res) {
         try {
-            let data = await Course.findAll()
-            // console.log(data);
+            console.log(req.query);
+            let {search, filter} = req.query
+            let data = await Course.getData(search, filter)
+            if(filter){
+
+                let filt = await Course.findAll({
+                    where: {
+                        level: filter
+                    }
+                })
+                console.log(filt);
+            }
             res.render(
                 'course.ejs',
                 {data}
