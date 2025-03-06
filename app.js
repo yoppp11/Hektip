@@ -6,6 +6,7 @@ const session = require('express-session')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: true }))
+app.use(express.static('public'))
 
 // menambahkan session
 app.use(session({
@@ -24,5 +25,3 @@ app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
 
-
-app.use(express.static('public'))
