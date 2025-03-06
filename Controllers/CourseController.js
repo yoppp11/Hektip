@@ -1,5 +1,6 @@
 const { Op, where } = require("sequelize");
 const { Course, CourseComment, Comment, UserCourse, User } = require("../models/index");
+const { route } = require("../routes/web");
 
 class CourseController {
     static async index(req, res) {
@@ -36,6 +37,12 @@ class CourseController {
             const user = req.session.user
             let { id } = req.params
 
+            const userCourse = await UserCourse.findOne({
+                where: {
+                    [Op.and]: [{ UserId: user.id }, { CourseId: id }],
+                }
+            })
+
             const query = {
                 where: {
                     id: id
@@ -54,7 +61,8 @@ class CourseController {
                     courseId: id,
                     course: course,
                     userData: user,
-                    comments: course.Comments
+                    comments: course.Comments,
+                    userCourse: userCourse
                 }
             )
         } catch (error) {
@@ -63,7 +71,24 @@ class CourseController {
     }
 
     static async routeJoinClas(req, res) {
-        console.log(req.session.user);
+
+    }
+
+    static async enrollCourse(req, res) {
+        try {
+            const now = new Date()
+            const reqBody = {
+                enrolledDate: now,
+                UserId: req.params.userId,
+                CourseId: req.params.courseId
+            }
+            await UserCourse.create(
+                reqBody
+            )
+            res.redirect(`/courses/${req.params.courseId}`)
+        } catch (error) {
+            res.send(error)
+        }
     }
 
     static async findCourseByUserId(req, res) {
@@ -82,7 +107,6 @@ class CourseController {
             const userCourses = await User.findOne(
                 query
             )
-            console.log(userCourses)
             res.render(
                 `userCourses.ejs`,
                 {

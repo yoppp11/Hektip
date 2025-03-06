@@ -38,11 +38,11 @@ router.get('/courses', CourseController.index)
 router.post('/logout', UserController.logout)
 router.get('/join', CourseController.routeJoinClas)
 
-
 router.get('/courses/:id', CourseController.routeGetCourseId)
 router.get('/users/:id/courses', CourseController.findCourseByUserId)
 
-router.post('/courses/:courseId/users/:userId', CourseController.storeComment)
+router.post('/courses/:courseId/users/:userId/userCourses', CourseController.enrollCourse)
+router.post('/courses/:courseId/users/:userId/comments', CourseController.storeComment)
 
 
 module.exports = router

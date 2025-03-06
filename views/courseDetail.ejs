@@ -100,9 +100,14 @@
 
                         <!-- Join Button -->
                         <div class="flex flex-col">
-                            <a class="text-center px-2 py-2 text-white font-bold bg-blue-500 w-full rounded w-full"
-                                href="/join">Gabung
-                                Sekarang</a>
+                            <form action="/courses/<%= courseId %>/users/<%= userData.id %>/userCourses" method="POST">
+                                <button
+                                    class="<%= (userCourse) ? 'bg-blue-300' : 'bg-blue-600' %> text-center px-2 py-2 text-white font-bold w-full rounded w-full"
+                                    type="submit" <%=(userCourse) ? "disabled" : "" %>>
+                                    <%= (userCourse) ? "Sudah Bergabung" : "Gabung Sekarang" %>
+                                </button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -114,7 +119,7 @@
                     <!-- items-center : center vertical -->
                     <div class="flex items-center mt-4">
                         <img src="https://cdn-icons-png.flaticon.com/512/9385/9385289.png" alt="" class="w-6 h-6">
-                        <form action="/courses/<%= courseId %>/users/<%= userData.id %>" method="POST">
+                        <form action="/courses/<%= courseId %>/users/<%= userData.id %>/comments" method="POST">
                             <input type="text" name="UserId" value="<%= userData.id %>" hidden>
                             <input name="content" type="text" placeholder="Tulis ulasan"
                                 class="px-2 py-2 rounded ms-4 border-2">
