@@ -1,13 +1,22 @@
-const { EagerLoadingError } = require("sequelize");
+const { Op } = require("sequelize");
 const { Course, CourseComment, Comment, UserCourse, User } = require("../models/index");
-const { Query } = require("pg");
 
 class CourseController {
     static async index(req, res) {
         try {
+            const queryParams = req.query.search
+            let query = {}
+
+            if (queryParams) {
+                query.where = {
+                    courseName: {
+                        [Op.iLike]: `%${queryParams}%`
+                    }
+                }
+            }
 
             const user = req.session.user
-            let data = await Course.findAll()
+            let data = await Course.findAll(query)
             res.render(
                 'course.ejs',
                 {

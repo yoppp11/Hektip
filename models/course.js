@@ -46,6 +46,7 @@ module.exports = (sequelize, DataTypes) => {
     curriculum: DataTypes.ARRAY(DataTypes.STRING),
     priceIdr: {
       type: DataTypes.VIRTUAL,
+      //getter
       get() {
         return this.getDataValue("price").toLocaleString('id-ID')
       }
