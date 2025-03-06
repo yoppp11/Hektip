@@ -1,6 +1,6 @@
 'use strict';
 
-const {NumberFormat} = require('intl')
+const { NumberFormat } = require('intl')
 const {
   Model
 } = require('sequelize');
@@ -13,20 +13,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Course.hasMany(models.UserCourse, {foreignKey: 'CourseId'})
-      Course.hasMany(models.CourseComment, {foreignKey: 'CourseId'})
+      Course.hasMany(models.UserCourse, { foreignKey: 'CourseId' })
+      Course.hasMany(models.CourseComment, { foreignKey: 'CourseId' })
     }
 
-    get formatPrice(){
+    get formatPrice() {
       return new NumberFormat('id-Id', {
         style: 'currency',
         currency: 'IDR'
       }).format(this.price)
     }
 
-    static async getdata(){
+    static async getdata() {
       try {
-        
+
       } catch (error) {
         throw error
       }
@@ -43,7 +43,13 @@ module.exports = (sequelize, DataTypes) => {
     instructorName: DataTypes.STRING,
     instructorAvatar: DataTypes.STRING,
     instructorBio: DataTypes.STRING,
-    curriculum: DataTypes.ARRAY(DataTypes.STRING)
+    curriculum: DataTypes.ARRAY(DataTypes.STRING),
+    priceIdr: {
+      type: DataTypes.VIRTUAL,
+      get() {
+        return this.getDataValue("price").toLocaleString('id-ID')
+      }
+    }
   }, {
     sequelize,
     modelName: 'Course',
