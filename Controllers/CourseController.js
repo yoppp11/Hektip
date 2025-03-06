@@ -61,11 +61,15 @@ class CourseController {
         console.log(req.session.user);
     }
 
-    static findCourseByUserId(req, res) {
+    static async findCourseByUserId(req, res) {
         try {
             const id = req.params.id
+            const user = req.session.user
             res.render(
-                `userCourses.ejs`
+                `userCourses.ejs`,
+                {
+                    userData: user
+                }
             )
         } catch (error) {
             res.send(error)
