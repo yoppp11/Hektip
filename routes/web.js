@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-const Controller = require('../Controllers/controller')
-const UserController = require('../Controllers/UserController')
+const Controller = require('../controllers/controller')
+const UserController = require('../controllers/UserController')
 const CourseController = require('../controllers/CourseController')
 
 
@@ -33,7 +33,6 @@ router.use(function (req, res, next) {
         res.redirect('/login')
     }
 })
-
 
 router.get('/courses', CourseController.index)
 router.post('/logout', UserController.logout)

@@ -4,8 +4,10 @@ const bcrypt = require('bcryptjs')
 class UserController {
     static async register(req, res) {
         try {
+            const user = req.session.user
             res.render(
-                `auth/register.ejs`
+                `auth/register.ejs`,
+                { userData: user }
             )
         } catch (error) {
             res.send(error)
@@ -25,13 +27,10 @@ class UserController {
 
     static async loginPage(req, res) {
         try {
-            let user
-            if (req.session.user) {
-                user = req.session.user
-            }
+            const user = req.session.user
             res.render(
                 `auth/login.ejs`,
-                { data: user }
+                { userData: user }
             )
         } catch (error) {
             res.send(error)
