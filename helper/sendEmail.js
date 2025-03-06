@@ -20,4 +20,4 @@ function sendMail(tujuan){
 
 }
 
-sendMail('takgae01@gmail.com')
+module.exports = sendMail

@@ -1,6 +1,7 @@
 const { Op, where } = require("sequelize");
 const { Course, CourseComment, Comment, UserCourse, User } = require("../models/index");
 const { route } = require("../routes/web");
+const sendMail = require("../helper/sendEmail");
 
 class CourseController {
     static async index(req, res) {
@@ -50,6 +51,7 @@ class CourseController {
                 include: {
                     model: Comment,
                     include: {
+                        order: [['createdAt', 'asc']],
                         model: User
                     }
                 }
@@ -77,6 +79,9 @@ class CourseController {
     static async enrollCourse(req, res) {
         try {
             const now = new Date()
+            let {userId, courseId} = req.params
+            let dataUser = await User.findByPk(+userId)
+
             const reqBody = {
                 enrolledDate: now,
                 UserId: req.params.userId,
@@ -85,6 +90,8 @@ class CourseController {
             await UserCourse.create(
                 reqBody
             )
+            
+            sendMail(dataUser.email)
             res.redirect(`/courses/${req.params.courseId}`)
         } catch (error) {
             res.send(error)
@@ -134,6 +141,87 @@ class CourseController {
             )
             res.redirect(`/courses/${req.params.courseId}`)
         } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async editComment(req, res){
+        try {
+            let { idCourse, idComment } = req.params
+            let { user } = req.session
+            let comment = await Comment.findByPk(+idComment)
+            console.log(comment);
+
+            const userCourse = await UserCourse.findOne({
+                where: {
+                    [Op.and]: [{ UserId: user.id }, { CourseId: idCourse }],
+                }
+            })
+
+            const query = {
+                where: {
+                    id: idCourse
+                },
+                include: {
+                    model: Comment,
+                    include: {
+                        model: User
+                    }
+                }
+            }
+            let course = await Course.findOne(query)
+            res.render(
+                'edit-comment',
+                {
+                    comment,
+                    courseId: idCourse,
+                    course: course,
+                    userData: user,
+                    comments: course.Comments,
+                    userCourse: userCourse
+                }
+            )
+
+
+            // res.render('edit-comment', {comment})
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async postEditComment(req, res){
+        try {
+            let {idCourse, idComment} = req.params
+            await Comment.update(req.body, {
+                where: {
+                    id: idComment
+                }
+            })
+            res.redirect(`/courses/${idCourse}`)
+        } catch (error) {
+            console.log(error);
+            res.send(error)
+        }
+    }
+
+    static async deleteComment(req, res){
+        try {
+            console.log(req.params);
+            let {idComment, idCourse} = req.params
+            await CourseComment.destroy({
+                where: {
+                    CommentId: idComment
+                }
+            })
+            await Comment.destroy({
+                where: {
+                    id: idComment
+                }
+            })
+            res.redirect(`/courses/${idCourse}`)
+        } catch (error) {
+            console.log(error);
             res.send(error)
         }
     }

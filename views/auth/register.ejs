@@ -17,8 +17,15 @@
                     <form class="space-y-6" action="/register" method="POST">
                         <div>
                             <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
+                            <% if (errors) { %>
+                             <% errors.forEach(el => { %>
+                              <% if (el.path === 'email') { %>
+                                <p style="color: red;"><%= el.msg %></p>
+                              <% } %>
+                             <% }) %>
+                            <% } %>
                             <div class="mt-2">
-                                <input type="email" name="email" id="email" autocomplete="email" required
+                                <input type="text" name="email" id="email" autocomplete="email"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 border-2">
                             </div>
                         </div>
@@ -27,9 +34,17 @@
                             <div class="flex items-center justify-between">
                                 <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
                             </div>
+                            <% if (errors) { %>
+                                <% errors.forEach(el => { %>
+                                 <% if (el.path === 'password') { %>
+                                   <p style="color: red;"><%= el.msg %></p>
+                                    <% return %>
+                                 <% } %>
+                                <% }) %>
+                               <% } %>
                             <div class="mt-2">
                                 <input type="password" name="password" id="password" autocomplete="current-password"
-                                    required
+                                    
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 border-2">
                             </div>
                         </div>
@@ -40,8 +55,8 @@
                             </div>
                             <div class="mt-2">
                                 <select class="w-full border-2 rounded px-2 py-2" name="role">
-                                    <option value="User">User</option>
-                                    <option value="Admin">Admin</option>
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
                                 </select>
 
                             </div>

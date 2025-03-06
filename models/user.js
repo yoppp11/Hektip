@@ -21,14 +21,54 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    role: DataTypes.STRING
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Email Tidak Boleh kosong'
+        },
+        notEmpty: {
+          msg: 'Email Tidak Boleh kosong'
+        },
+        isEmail: {
+          msg: 'Email tidak valid'
+        },
+        async emailNotValid(value) {
+          let isValid = await User.findOne({
+            where: {
+              email: value
+            }
+          })
+
+          if(isValid) throw new Error('Email sudah terdaftar')
+        }
+      }
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Password Tidak Boleh kosong'
+        },
+        notEmpty: {
+          msg: 'Password Tidak Boleh kosong'
+        },
+        len: {
+          args: [8],
+          msg: 'Password minimal 8 karakter'
+        }
+      }
+    },
+    role: {
+      type: DataTypes.STRING
+    },
   }, {
     sequelize,
     modelName: 'User',
   });
-
+  
   // hook untuk hashing password
   User.beforeCreate(async (user, options) => {
     const salt = await bcrypt.genSalt(10);

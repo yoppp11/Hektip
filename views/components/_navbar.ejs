@@ -61,10 +61,11 @@
                     <% if (userData) { %>
                         <div>
                             <div class="flex space-x-4">
+                                <a href="/profile" class="rounded-md bg-primary-500 px-3 py-2 text-sm font-medium text-white">Profile</a>
                                 <form action="/logout" method="POST">
                                     <button type="submit"
                                         class="rounded-md bg-red-500 px-3 py-2 text-sm font-medium text-white">Logout</button>
-                                </form>
+                                    </form>
                             </div>
                         </div>
                         <% } %>

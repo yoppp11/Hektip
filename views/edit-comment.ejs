@@ -127,12 +127,6 @@
                         </form>
                     </div>
 
-                    <% if (!comments) { %>
-                        
-                     <h1>Comment not found</h1>
-
-                    <% } else { %>
-
                     <% comments.forEach((obj)=> {%>
                         <div class="flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 p-6 mt-6 relative"
                             x-data="{ isOpen: false }">
@@ -149,22 +143,10 @@
                                     class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg">
                                     <ul>
                                         <li>
-                                            <% if (obj.User.id === userData.id) { %>
-                                                <a href="/courses/<%= courseId %>/edit/<%= obj.id %>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Edit</a>
-                                                
-                                                <% } else { %>
-                                                    
-                                                    <a href="/courses/<%= courseId %>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Edit</a>
-                                                <% } %>
-                                            </li>
-                                            <li>
-                                            <% if (obj.User.id === userData.id) { %>
-                                                <a href="/courses/<%= courseId %>/delete/<%= obj.id %>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Hapus</a>
-                                                
-                                                <% } else { %>
-                                                    
-                                                    <a href="/courses/<%= courseId %>" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Hapus</a>
-                                                <% } %>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Edit</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600">Hapus</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -182,14 +164,20 @@
                                             <%= obj.formatDate() %>
                                         </p>
                                     </div>
+                                    <% if ((comment.id === obj.id) && (userData.email === obj.User.email)) { %>
+                                     <form action="/courses/<%= courseId %>/edit/<%= obj.id %>" method="post">
+                                        <input type="text" name="content" value="<%= obj.content %>" style="color: white;">
+                                        <button type="submit" class="px-2 py-2 bg-blue-500 rounded text-white">Edit</button>
+                                     </form>
+                                     <% } else { %>
                                     <p class="text-gray-800 text-sm mt-1" style="color: white;">
                                         <%= obj.content %>
                                     </p>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>
                         <% }) %>
-                        <% } %>
                 </div>
             </div>
             <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
