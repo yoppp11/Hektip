@@ -74,9 +74,10 @@ class UserController {
     static async loginPage(req, res) {
         try {
             const user = req.session.user
+            let {error} = req.query
             res.render(
                 `auth/login.ejs`,
-                { userData: user }
+                { userData: user, error }
             )
         } catch (error) {
             res.send(error)
@@ -106,11 +107,11 @@ class UserController {
                     res.redirect('/')
                 } else {
                     // password salah
-                    res.redirect('/login')
+                    res.redirect('/login?error=Password%20Salah')
                 }
             } else {
                 //email tidak ditemukan
-                res.redirect('/login')
+                res.redirect('/login?error=Email%20Tidak%20Ditemukan')
             }
         } catch (error) {
             res.send(error)

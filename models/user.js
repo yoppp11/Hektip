@@ -25,12 +25,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: {
-          msg: 'Email Tidak Boleh kosong'
-        },
-        notEmpty: {
-          msg: 'Email Tidak Boleh kosong'
-        },
         isEmail: {
           msg: 'Email tidak valid'
         },
@@ -49,12 +43,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: {
-          msg: 'Password Tidak Boleh kosong'
-        },
-        notEmpty: {
-          msg: 'Password Tidak Boleh kosong'
-        },
         len: {
           args: [8],
           msg: 'Password minimal 8 karakter'
@@ -66,7 +54,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'User',
+    modelName: 'User'
   });
   
   // hook untuk hashing password
