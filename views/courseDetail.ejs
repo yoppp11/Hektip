@@ -133,7 +133,9 @@
                                         <p class="font-bold">
                                             <%= obj.User.email %>
                                         </p>
-                                        <p class="ms-4">2 Maret 2020</p>
+                                        <p class="ms-4">
+                                            <%= obj.formatDate() %>
+                                        </p>
                                     </div>
                                     <p class="text-gray-800 text-sm mt-1">
                                         <%= obj.content %>

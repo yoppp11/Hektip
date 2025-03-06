@@ -11,8 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Comment.belongsTo(models.User, {foreignKey: 'UserId'})
-      Comment.hasMany(models.CourseComment, {foreignKey: 'CommentId'})
+      Comment.belongsTo(models.User, { foreignKey: 'UserId' })
+      Comment.hasMany(models.CourseComment, { foreignKey: 'CommentId' })
+    }
+
+    formatDate() {
+      const createdDate = new Date(this.getDataValue('createdAt'))
+      const options = { day: 'numeric', month: 'long', year: 'numeric' };
+      const formattedDate = createdDate.toLocaleDateString('id-ID', options);
+      return formattedDate
     }
   }
   Comment.init({
