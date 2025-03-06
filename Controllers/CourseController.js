@@ -33,36 +33,17 @@ class CourseController {
 
     static async routeGetCourseId(req, res) {
         try {
+            const user = req.session.user
             let { id } = req.params
-            let course = await Course.findByPk(+id, {
-                include: {
-                    model: CourseComment,
-                    where: {
-                        CourseId: +id
-                    }
+            let course = await Course.findByPk(+id)
+            res.render(
+                'courseDetail.ejs',
+                {
+                    course: course,
+                    userData: user
                 }
-            })
-            let courseComment = await Promise.all(
-
-                course.dataValues.CourseComments.map(async (el) => {
-                    try {
-                        return await Comment.findOne({
-                            where: {
-                                id: el.CommentId
-                            }
-                        })
-
-                    } catch (error) {
-                        throw error
-                    }
-                })
             )
-            // courseComment = courseComment[0]
-            // console.log(course.dataValues.CourseComments);
-            console.log(courseComment);
-            res.render('detail-course', { course, courseComment })
         } catch (error) {
-            console.log(error);
             res.send(error)
         }
     }

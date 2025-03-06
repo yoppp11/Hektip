@@ -8,7 +8,7 @@
         "membersJoined": 1234,
         "level": "Intermediate",
         "instructorName": "John Doe",
-        "instructorAvatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+        "instructorAvatar": "https://cdn-icons-png.flaticon.com/512/9385/9385289.png",
         "instructorBio": "John is a senior software engineer with over 10 years of experience in web development.",
         "curriculum": [
             "Advanced JavaScript concepts like closures and promises",
@@ -26,7 +26,7 @@
         "membersJoined": 256,
         "level": "Advanced",
         "instructorName": "Jane Smith",
-        "instructorAvatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+        "instructorAvatar": "https://cdn-icons-png.flaticon.com/512/9385/9385289.png",
         "instructorBio": "Jane is a frontend developer specializing in React and Redux.",
         "curriculum": [
             "React fundamentals and JSX",
@@ -44,7 +44,7 @@
         "membersJoined": 5230,
         "level": "Beginner",
         "instructorName": "Emily Johnson",
-        "instructorAvatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+        "instructorAvatar": "https://cdn-icons-png.flaticon.com/512/9385/9385289.png",
         "instructorBio": "Emily is a data scientist with expertise in Python and machine learning.",
         "curriculum": [
             "Python basics and data structures",
@@ -62,7 +62,7 @@
         "membersJoined": 3218,
         "level": "Intermediate",
         "instructorName": "Michael Brown",
-        "instructorAvatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+        "instructorAvatar": "https://cdn-icons-png.flaticon.com/512/9385/9385289.png",
         "instructorBio": "Michael is a full-stack developer with expertise in MERN stack.",
         "curriculum": [
             "Introduction to MERN stack",
@@ -80,7 +80,7 @@
         "membersJoined": 5678,
         "level": "Beginner",
         "instructorName": "Sophia Lee",
-        "instructorAvatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+        "instructorAvatar": "https://cdn-icons-png.flaticon.com/512/9385/9385289.png",
         "instructorBio": "Sophia is a UI/UX designer with over 8 years of experience.",
         "curriculum": [
             "Introduction to UI/UX design",
@@ -98,7 +98,7 @@
         "membersJoined": 488,
         "level": "Advanced",
         "instructorName": "David Wilson",
-        "instructorAvatar": "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg",
+        "instructorAvatar": "https://cdn-icons-png.flaticon.com/512/9385/9385289.png",
         "instructorBio": "David is a cloud architect with expertise in AWS and Azure.",
         "curriculum": [
             "Introduction to AWS",
