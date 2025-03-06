@@ -122,26 +122,26 @@
                         </form>
                     </div>
 
-                    <div
-                        class="flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 p-6 mt-6">
-                        <div class="flex">
-                            <img src="https://cdn-icons-png.flaticon.com/512/9385/9385289.png" alt="" class="w-6 h-6">
-                            <div class="flex flex-col ms-4">
-                                <div class="flex">
-                                    <p class="font-bold">Dicky Pratama</p>
-                                    <p class="ms-4">2 Maret 2020</p>
+                    <% comments.forEach((obj)=> {%>
+                        <div
+                            class="flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 p-6 mt-6">
+                            <div class="flex">
+                                <img src="https://cdn-icons-png.flaticon.com/512/9385/9385289.png" alt=""
+                                    class="w-6 h-6">
+                                <div class="flex flex-col ms-4">
+                                    <div class="flex">
+                                        <p class="font-bold">
+                                            <%= obj.User.email %>
+                                        </p>
+                                        <p class="ms-4">2 Maret 2020</p>
+                                    </div>
+                                    <p class="text-gray-800 text-sm mt-1">
+                                        <%= obj.content %>
+                                    </p>
                                 </div>
-                                <p class="text-gray-800 text-sm mt-1">Lorem ipsum dolor sit, amet consectetur
-                                    adipisicing
-                                    elit.
-                                    Commodi
-                                    culpa id debitis, quas
-                                    odio
-                                    ex alias tempore incidunt facere beatae nihil, autem animi quia quaerat aliquid
-                                    exercitationem nemo eos et!</p>
                             </div>
                         </div>
-                    </div>
+                        <% }) %>
                 </div>
             </div>
             <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />

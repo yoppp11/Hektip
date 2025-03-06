@@ -1,4 +1,4 @@
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
 const { Course, CourseComment, Comment, UserCourse, User } = require("../models/index");
 
 class CourseController {
@@ -35,13 +35,26 @@ class CourseController {
         try {
             const user = req.session.user
             let { id } = req.params
-            let course = await Course.findByPk(+id)
+
+            const query = {
+                where: {
+                    id: id
+                },
+                include: {
+                    model: Comment,
+                    include: {
+                        model: User
+                    }
+                }
+            }
+            let course = await Course.findOne(query)
             res.render(
                 'courseDetail.ejs',
                 {
                     courseId: id,
                     course: course,
-                    userData: user
+                    userData: user,
+                    comments: course.Comments
                 }
             )
         } catch (error) {
@@ -81,10 +94,6 @@ class CourseController {
         } catch (error) {
             res.send(error)
         }
-    }
-
-    static async readComments(req, res) {
-
     }
 
     static async storeComment(req, res) {
