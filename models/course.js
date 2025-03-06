@@ -17,6 +17,14 @@ module.exports = (sequelize, DataTypes) => {
       Course.hasMany(models.CourseComment, { foreignKey: 'CourseId' })
     }
 
+    // static method
+    formatDate() {
+      const createdDate = new Date(this.getDataValue('createdAt'))
+      const options = { day: 'numeric', month: 'long', year: 'numeric' };
+      const formattedDate = createdDate.toLocaleDateString('id-ID', options);
+      return formattedDate
+    }
+
     get formatPrice() {
       return new NumberFormat('id-Id', {
         style: 'currency',

@@ -40,7 +40,7 @@
                             <div>
                                 <p class="text-sm text-gray-500">Release Date</p>
                                 <p class="font-semibold">
-                                    <%= course.releaseDate %>
+                                    <%= course.formatDate() %>
                                 </p>
                             </div>
                             <div>
@@ -56,31 +56,23 @@
                                 </p>
                             </div>
                         </div>
-
-                        <!-- Join Button -->
-                        <div class="card-actions">
-                            <a class="btn btn-primary w-full" href="/join">Join Now</a>
-                        </div>
                     </div>
                 </div>
 
-                <!-- Right Column: Instructor Card and Course Content -->
                 <div class="space-y-8">
-                    <!-- Instructor Card -->
                     <div class="card bg-base-100 shadow-xl">
                         <div class="card-body">
                             <div class="flex items-center space-x-4">
                                 <div class="avatar">
-                                    <%= course.instructorAvatar%>
-                                        <div class="w-16 rounded-full">
-                                            <img src="<%= course.instructorAvatar %>" alt="Instructor Avatar" />
-                                        </div>
+                                    <div class="w-16 rounded-full">
+                                        <img src="<%= course.instructorAvatar %>" alt="Instructor Avatar" />
+                                    </div>
                                 </div>
                                 <div>
                                     <h2 class="card-title">
                                         <%= course.instructorName %>
                                     </h2>
-                                    <p class="text-sm text-gray-500">Instructor</p>
+                                    <p class="text-sm text-gray-500">Instruktur</p>
                                 </div>
                             </div>
                             <p class="mt-4">
@@ -109,31 +101,43 @@
                             </ul>
                         </div>
                     </div>
+
+                    <!-- Join Button -->
+                    <div class="card-actions">
+                        <a class="btn btn-primary w-full" href="/join">Gabung Sekarang</a>
+                    </div>
                 </div>
             </div>
 
             <!-- Comments Section -->
             <div class="mt-12">
-                <h2 class="text-2xl font-bold mb-6">Student Reviews</h2>
-                <div class="space-y-6">
-                    <div class="card bg-base-100 shadow-xl">
-                        <div class="card-body">
-                            <div class="flex items-center space-x-4">
-                                <div class="avatar">
-                                    <div class="w-12 rounded-full">
-                                        <img src="" alt="User Avatar" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold">yopyop</h3>
-                                    <p class="text-sm text-gray-500">
-                                        xxxxx
-                                    </p>
-                                </div>
+                <h2 class="text-2xl font-bold">Ulasan Pelajar</h2>
+
+                <!-- items-center : center vertical -->
+                <div class="flex items-center mt-4">
+                    <img src="https://cdn-icons-png.flaticon.com/512/9385/9385289.png" alt="" class="w-6 h-6">
+                    <form action="">
+                        <input type="text" placeholder="Tulis ulasan" class="px-2 py-2 rounded ms-4">
+                        <button class="px-2 py-2 bg-blue-500 font-bold text-white rounded">Tambah Ulasan</button>
+                    </form>
+                </div>
+
+                <div
+                    class="flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 p-6 mt-6">
+                    <div class="flex">
+                        <img src="https://cdn-icons-png.flaticon.com/512/9385/9385289.png" alt="" class="w-6 h-6">
+                        <div class="flex flex-col ms-4">
+                            <div class="flex">
+                                <p class="font-bold">Dicky Pratama</p>
+                                <p class="ms-4">2 Maret 2020</p>
                             </div>
-                            <p class="mt-4">
-                                xxxx
-                            </p>
+                            <p class="text-gray-800 text-sm mt-1">Lorem ipsum dolor sit, amet consectetur adipisicing
+                                elit.
+                                Commodi
+                                culpa id debitis, quas
+                                odio
+                                ex alias tempore incidunt facere beatae nihil, autem animi quia quaerat aliquid
+                                exercitationem nemo eos et!</p>
                         </div>
                     </div>
                 </div>
