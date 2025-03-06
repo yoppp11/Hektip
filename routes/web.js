@@ -6,13 +6,20 @@ const UserController = require('../controllers/UserController')
 const CourseController = require('../controllers/CourseController')
 
 
-// TODO : BUAT JADI HELPER
 function redirectIfAuthenticated(req, res, next) {
     if (req.session.user) {
-        // Kalau udah login, mental ke halaman orders
+        // Kalau udah login, mental
         return res.redirect('/courses')
     }
     next() // Kalau belum login, lanjut ke handler berikutnya
+}
+
+function userOnly(req, res, next) {
+    if (req.session.user.role !== "User") {
+        let message = "halaman tersebut hanya boleh diakses oleh user"
+        return res.redirect(`/?message=${message}`)
+    }
+    next()
 }
 
 router.get('/', Controller.index)
@@ -34,7 +41,7 @@ router.use(function (req, res, next) {
     }
 })
 
-router.get('/courses', CourseController.index)
+router.get('/courses', userOnly, CourseController.index)
 router.post('/logout', UserController.logout)
 router.get('/join', CourseController.routeJoinClas)
 
