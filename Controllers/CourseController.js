@@ -39,6 +39,7 @@ class CourseController {
             res.render(
                 'courseDetail.ejs',
                 {
+                    courseId: id,
                     course: course,
                     userData: user
                 }
@@ -72,10 +73,33 @@ class CourseController {
             res.render(
                 `userCourses.ejs`,
                 {
+                    courseId: id,
                     userData: user,
                     data: userCourses.Courses
                 }
             )
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async readComments(req, res) {
+
+    }
+
+    static async storeComment(req, res) {
+        try {
+            // chaining + req.body
+            const comment = await Comment.create(
+                req.body
+            )
+            await CourseComment.create(
+                {
+                    CommentId: comment.id,
+                    CourseId: req.params.courseId
+                }
+            )
+            res.redirect(`/courses/${req.params.courseId}`)
         } catch (error) {
             res.send(error)
         }

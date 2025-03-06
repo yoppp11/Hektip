@@ -1,150 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<%- include('components/_head.ejs') %>
 
-<body>
+    <body>
 
-    <%- include('components/_navbar.ejs') %>
+        <%- include('components/_navbar.ejs') %>
 
-        <!-- Course Detail Section -->
-        <div class="container mx-auto p-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Left Column: Video and Details -->
-                <div class="space-y-8">
-                    <!-- Video Player -->
-                    <div class="card bg-base-100 shadow-xl">
-                        <figure class="relative aspect-video">
-                            <iframe class="w-full h-full" src="<%= course.trailerUrl %>" title="Course Trailer"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                        </figure>
-                    </div>
-
-                    <!-- Course Details -->
-                    <div class="space-y-4">
-                        <h1 class="text-4xl font-bold">
-                            <%= course.courseName %>
-                        </h1>
-                        <p class="text-gray-600">
-                            <%= course.description %>
-                        </p>
-
-                        <!-- Additional Info -->
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            <div>
-                                <p class="text-sm text-gray-500">Release Date</p>
-                                <p class="font-semibold">
-                                    <%= course.formatDate() %>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500">Members Joined</p>
-                                <p class="font-semibold">
-                                    <%= course.membersJoined %>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500">Level</p>
-                                <p class="font-semibold">
-                                    <%= course.level %>
-                                </p>
-                            </div>
+            <!-- Course Detail Section -->
+            <div class="container mx-auto p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Left Column: Video and Details -->
+                    <div class="space-y-8">
+                        <!-- Video Player -->
+                        <div class="card bg-base-100 shadow-xl">
+                            <figure class="relative aspect-video">
+                                <iframe class="w-full h-full" src="<%= course.trailerUrl %>" title="Course Trailer"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </figure>
                         </div>
-                    </div>
-                </div>
 
-                <div class="space-y-8">
-                    <div class="card bg-base-100 shadow-xl">
-                        <div class="card-body">
-                            <div class="flex items-center space-x-4">
-                                <div class="avatar">
-                                    <div class="w-16 rounded-full">
-                                        <img src="<%= course.instructorAvatar %>" alt="Instructor Avatar" />
-                                    </div>
+                        <!-- Course Details -->
+                        <div class="space-y-4">
+                            <h1 class="text-4xl font-bold">
+                                <%= course.courseName %>
+                            </h1>
+                            <p class="text-gray-600">
+                                <%= course.description %>
+                            </p>
+
+                            <!-- Additional Info -->
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div>
+                                    <p class="text-sm text-gray-500">Release Date</p>
+                                    <p class="font-semibold">
+                                        <%= course.formatDate() %>
+                                    </p>
                                 </div>
                                 <div>
-                                    <h2 class="card-title">
-                                        <%= course.instructorName %>
-                                    </h2>
-                                    <p class="text-sm text-gray-500">Instruktur</p>
+                                    <p class="text-sm text-gray-500">Members Joined</p>
+                                    <p class="font-semibold">
+                                        <%= course.membersJoined %>
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Level</p>
+                                    <p class="font-semibold">
+                                        <%= course.level %>
+                                    </p>
                                 </div>
                             </div>
-                            <p class="mt-4">
-                                <%= course.instructorBio %>
-                            </p>
                         </div>
                     </div>
 
-                    <!-- Course Content -->
-                    <div class="card bg-base-100 shadow-xl">
-                        <div class="card-body">
-                            <h2 class="card-title">What You'll Learn</h2>
-                            <ul class="space-y-2">
-                                <% course.curriculum.forEach(item=> { %>
-                                    <li class="flex items-center space-x-2">
-                                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M5 13l4 4L19 7"></path>
-                                        </svg>
-                                        <span>
-                                            <%= item %>
-                                        </span>
-                                    </li>
-                                    <% }) %>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Join Button -->
-                    <div class="card-actions">
-                        <a class="btn btn-primary w-full" href="/join">Gabung Sekarang</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Comments Section -->
-            <div class="mt-12">
-                <h2 class="text-2xl font-bold">Ulasan Pelajar</h2>
-
-                <!-- items-center : center vertical -->
-                <div class="flex items-center mt-4">
-                    <img src="https://cdn-icons-png.flaticon.com/512/9385/9385289.png" alt="" class="w-6 h-6">
-                    <form action="">
-                        <input type="text" placeholder="Tulis ulasan" class="px-2 py-2 rounded ms-4">
-                        <button class="px-2 py-2 bg-blue-500 font-bold text-white rounded">Tambah Ulasan</button>
-                    </form>
-                </div>
-
-                <div
-                    class="flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 p-6 mt-6">
-                    <div class="flex">
-                        <img src="https://cdn-icons-png.flaticon.com/512/9385/9385289.png" alt="" class="w-6 h-6">
-                        <div class="flex flex-col ms-4">
-                            <div class="flex">
-                                <p class="font-bold">Dicky Pratama</p>
-                                <p class="ms-4">2 Maret 2020</p>
+                    <div class="space-y-8">
+                        <div class="card bg-base-100 shadow-xl">
+                            <div class="card-body">
+                                <div class="flex items-center space-x-4">
+                                    <div class="avatar">
+                                        <div class="w-16 rounded-full">
+                                            <img src="<%= course.instructorAvatar %>" alt="Instructor Avatar" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h2 class="card-title">
+                                            <%= course.instructorName %>
+                                        </h2>
+                                        <p class="text-sm text-gray-500">Instruktur</p>
+                                    </div>
+                                </div>
+                                <p class="mt-4">
+                                    <%= course.instructorBio %>
+                                </p>
                             </div>
-                            <p class="text-gray-800 text-sm mt-1">Lorem ipsum dolor sit, amet consectetur adipisicing
-                                elit.
-                                Commodi
-                                culpa id debitis, quas
-                                odio
-                                ex alias tempore incidunt facere beatae nihil, autem animi quia quaerat aliquid
-                                exercitationem nemo eos et!</p>
+                        </div>
+
+                        <!-- Course Content -->
+                        <div class="card bg-base-100 shadow-xl">
+                            <div class="card-body">
+                                <h2 class="card-title">What You'll Learn</h2>
+                                <ul class="space-y-2">
+                                    <% course.curriculum.forEach(item=> { %>
+                                        <li class="flex items-center space-x-2">
+                                            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                            <span>
+                                                <%= item %>
+                                            </span>
+                                        </li>
+                                        <% }) %>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Join Button -->
+                        <div class="flex flex-col">
+                            <a class="text-center px-2 py-2 text-white font-bold bg-blue-500 w-full rounded w-full"
+                                href="/join">Gabung
+                                Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comments Section -->
+                <div class="mt-12">
+                    <h2 class="text-2xl font-bold">Ulasan Pelajar</h2>
+
+                    <!-- items-center : center vertical -->
+                    <div class="flex items-center mt-4">
+                        <img src="https://cdn-icons-png.flaticon.com/512/9385/9385289.png" alt="" class="w-6 h-6">
+                        <form action="/courses/<%= courseId %>/users/<%= userData.id %>" method="POST">
+                            <input type="text" name="UserId" value="<%= userData.id %>" hidden>
+                            <input name="content" type="text" placeholder="Tulis ulasan"
+                                class="px-2 py-2 rounded ms-4 border-2">
+                            <button class="px-2 py-2 bg-blue-500 font-bold text-white rounded">Tambah Ulasan</button>
+                        </form>
+                    </div>
+
+                    <div
+                        class="flex flex-col bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 p-6 mt-6">
+                        <div class="flex">
+                            <img src="https://cdn-icons-png.flaticon.com/512/9385/9385289.png" alt="" class="w-6 h-6">
+                            <div class="flex flex-col ms-4">
+                                <div class="flex">
+                                    <p class="font-bold">Dicky Pratama</p>
+                                    <p class="ms-4">2 Maret 2020</p>
+                                </div>
+                                <p class="text-gray-800 text-sm mt-1">Lorem ipsum dolor sit, amet consectetur
+                                    adipisicing
+                                    elit.
+                                    Commodi
+                                    culpa id debitis, quas
+                                    odio
+                                    ex alias tempore incidunt facere beatae nihil, autem animi quia quaerat aliquid
+                                    exercitationem nemo eos et!</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</body>
+            <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+            <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </body>
 
 </html>
