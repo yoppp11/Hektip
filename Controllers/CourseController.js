@@ -1,5 +1,6 @@
 const { EagerLoadingError } = require("sequelize");
-const { Course, CourseComment, Comment } = require("../models/index")
+const { Course, CourseComment, Comment, UserCourse, User } = require("../models/index");
+const { Query } = require("pg");
 
 class CourseController {
     static async index(req, res) {
@@ -65,10 +66,24 @@ class CourseController {
         try {
             const id = req.params.id
             const user = req.session.user
+
+            const query = {
+                where: {
+                    id: id
+                },
+                include: {
+                    model: Course
+                }
+            }
+            const userCourses = await User.findOne(
+                query
+            )
+            console.log(userCourses)
             res.render(
                 `userCourses.ejs`,
                 {
-                    userData: user
+                    userData: user,
+                    data: userCourses.Courses
                 }
             )
         } catch (error) {
